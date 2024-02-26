@@ -1,12 +1,12 @@
 class Solution:
     def maxSum(self, grid: List[List[int]]) -> int:
-        col=len(grid[0])
-        row=len(grid)
-        m_sum=0
-        for i in range(row):
-            for j in range(col):
-                if j+2<col and i+2<row:
-                    t_sum=grid[i][j]+grid[i][j+1]+grid[i][j+2]+grid[i+1][j+1]+grid[i+2][j]+grid[i+2][j+1]+grid[i+2][j+2]
-                    if t_sum>m_sum:
-                        m_sum=t_sum
-        return m_sum
+        lst = []
+        for i in range(len(grid) - 2):
+            for j in range(0, len(grid[i]) - 2):
+                count = 0
+                count += sum(grid[i][j:j+3])
+                count += grid[i+1][j+1]
+                count += sum(grid[i+2][j:j+3])
+                lst.append(count)
+
+        return max(lst)
