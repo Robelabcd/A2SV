@@ -6,8 +6,8 @@ class Solution:
                 dict[nums[i]] += 1
             else: 
                 dict[nums[i]] = 1
-            # initialize result 
-            res = 0
+        # initialize result 
+        res = 0
         for key in dict: 
             if (dict[key] >= 2): 
                 res += ((dict[key] * (dict[key] - 1)) // 2) 
