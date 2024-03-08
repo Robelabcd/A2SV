@@ -1,22 +1,3 @@
-# class Solution:
-#     def threeSum(self, nums: List[int]) -> List[List[int]]:
-#         res = []
-#         for i in range(len(nums)-2):
-            
-#             j, k = i + 1, i + 2
-#             while k < len(nums):
-
-#                 if (nums[i] + nums[j] + nums[k]) == 0:
-#                     res.append([nums[i], nums[j], nums[k]])
-
-#                 j += 1
-#                 k += 1
-
-#         for i in range(len(res)-1, -1, -1):
-#             print(res[i])
-
-#         return res
-
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         res = []
@@ -48,3 +29,25 @@ class Solution:
                     k -= 1
 
         return res
+
+
+# class Solution:
+#     def threeSum(self, nums: List[int]) -> List[List[int]]:
+#         res = []
+#         for i in range(len(nums)-2):
+            
+#             j, k = i + 1, i + 2
+#             while k < len(nums):
+
+#                 if (nums[i] + nums[j] + nums[k]) == 0:
+#                     res.append([nums[i], nums[j], nums[k]])
+
+#                 j += 1
+#                 k += 1
+
+#         for i in range(len(res)-1, -1, -1):
+#             print(res[i])
+
+#         return res
+
+
