@@ -1,22 +1,31 @@
 class Solution:
     def smallestNumber(self, num: int) -> int:
-        postive=num>0
-        ans=""
-        num=sorted(str(abs(num)),reverse=not postive)
-        zeros=0
-        for i in num:
-            if i=='0':
-                zeros+=1
-            else:
-                ans+=i
-        if postive:
-            ans=ans[0]+('0'*zeros)+ans[1:]
-        else:
-            ans+='0'*zeros
-
-        return int(ans)*pow(-1,1+postive)
-
-            
-            
-
+        if num == 0:
+            return 0
+        sign = 1 if num > 0 else -1
+        num = abs(num)
+        nums = []
+        while num:
+            num, mod = divmod(num, 10)
+            nums.append(mod)
         
+        nums.sort()
+        n = len(nums)
+        res = 0
+        print(nums)
+        if sign == -1:
+            for i in range(n-1, -1, -1):
+                res = res * 10 + nums[i]
+            res *= -1
+        else:
+            i = 0
+            while i < n and nums[i] == 0:
+                i += 1
+            nums[0], nums[i] = nums[i], nums[0]
+            print(nums)
+            for i in range(n):
+                res = res * 10 + nums[i]
+        
+        return res
+
+
