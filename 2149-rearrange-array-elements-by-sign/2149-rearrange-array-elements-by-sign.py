@@ -11,12 +11,15 @@ class Solution:
 
         result = []
 
-        while positive and negative:
+        i, j = 0, 0
+        while i < len(positive) and j < len(negative):
             
-            result.append(positive.pop(0))
-            result.append(negative.pop(0))
+            result.append(positive[i])
+            result.append(negative[j])
+            i += 1
+            j += 1
 
-        result.extend(negative)
-        result.extend(positive)
+        result.extend(negative[j:])
+        result.extend(positive[i:])
 
         return result
