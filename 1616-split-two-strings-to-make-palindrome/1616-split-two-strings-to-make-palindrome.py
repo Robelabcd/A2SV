@@ -7,7 +7,16 @@ class Solution:
     def checkPalindrome(self, a: str, b: str) -> bool:
         
         def palindrome(s):
-            return s == s[::-1]
+            i, j = 0, len(s)-1
+            while i < len(s) and j > -1:
+    
+                if s[i] == s[j]:
+                    i += 1
+                    j -= 1
+                else:
+                    return False
+
+            return True
         
         i, j = 0, len(a) - 1
         while i < j and a[i] == b[j]:
