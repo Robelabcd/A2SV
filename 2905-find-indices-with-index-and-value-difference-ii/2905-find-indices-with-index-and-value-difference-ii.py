@@ -1,7 +1,6 @@
 class Solution:
     def findIndices(self, nums: List[int], indexDifference: int, valueDifference: int) -> List[int]:
         
-
             #precompute minimum array backward
             n = len(nums)
 
@@ -37,8 +36,7 @@ class Solution:
                     max_index = i
                 maxback.append(max_index)
 
-            maxback.reverse()
-            print(maxback)  
+            maxback.reverse()  
             
             min_temp = nums[0]
             for i in range(n -  indexDifference):
@@ -82,7 +80,7 @@ class Solution:
 
 
 
-
+# another approach but time limit exceeded
         # for i in range(len(nums)):
 
         #     j = i + indexDifference
