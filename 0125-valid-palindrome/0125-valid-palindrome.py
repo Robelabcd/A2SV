@@ -13,10 +13,10 @@ class Solution:
 
         while i < len(newstr):
 
-            if newstr[i] == newstr[j]:
-                i += 1
-                j -= 1
-            else: 
+            if newstr[i] != newstr[j]:
                 return False
+            
+            i += 1
+            j -= 1
 
         return True
