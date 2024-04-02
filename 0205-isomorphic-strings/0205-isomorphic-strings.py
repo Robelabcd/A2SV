@@ -3,7 +3,7 @@ class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
 
         
-        dictt = Counter(s)
+        dictt = Counter(s)     #to check the frequency of that character
         dictt2 = Counter(t)
 
         for i in range(len(s)):
@@ -11,7 +11,7 @@ class Solution:
             if dictt[s[i]] != dictt2[t[i]]:
                 return False
 
-        dictt3 = {}
+        dictt3 = {}             #to check the positions are not mismatched
 
         for i in range(len(s)):
             
@@ -27,7 +27,9 @@ class Solution:
 
 
 
-
+#Time complexity: O(n)
+#Space complexity: O(1) 
+'''Since the number of unique characters in a string is bounded (typically by the size of the character set, such as ASCII or Unicode)'''
 
 
 
