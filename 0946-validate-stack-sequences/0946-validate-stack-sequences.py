@@ -4,7 +4,7 @@ class Solution:
         
         pushed = [1,2,3,4,5], popped = [4,5,3,2,1]
 
-        is it possible to have this sequence by doing and popping the elements
+        is it possible to have this sequence by pushing and popping the elements
 
         let's create a test stack to see the possiblities
 
