@@ -18,6 +18,8 @@ class Solution:
         for i in range(n):
             prefix_sum[i + 1] = prefix_sum[i] + nums[i]
 
+        print(prefix_sum)
+
         #create deque to store the indices so that to know the distance
         deque_index = deque()
         res = float('inf') #since we take the minimum value
@@ -28,7 +30,13 @@ class Solution:
             while deque_index and prefix_sum[i] - prefix_sum[deque_index[0]] >= k:
                 res = min(res, i - deque_index.popleft())
             
+            ''' 
+            [84,-37,32,40,95]  --> pre_sum = [0, 84, 47, 79, 119, 214]
+
+            the -ve value is making a problem 
+            pref[current] <= pref[deque[top]] ---> pop
             
+            '''
             while deque_index and prefix_sum[i] <= prefix_sum[deque_index[-1]]:
                 deque_index.pop()
 
