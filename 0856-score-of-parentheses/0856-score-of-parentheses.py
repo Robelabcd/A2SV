@@ -21,5 +21,11 @@ class Solution:
         
         return stack[-1]
 
+'''
+worst case - O(n/2)
+((((((((((   ))))))))))   -->appending first and popping later
 
-        
+best case - O(1)
+()()()    ----> appending and popping each time
+
+'''
