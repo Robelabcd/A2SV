@@ -1,8 +1,8 @@
 class Solution:
     def longestSubarray(self, nums: List[int], limit: int) -> int:
         
-        inc = []
-        dec = []
+        inc = deque() 
+        dec = deque()
 
         left = 0
         res = 0
@@ -30,16 +30,13 @@ class Solution:
             1 2
             
             '''
-
-
-
             while nums[inc[0]] - nums[dec[0]] > limit:
 
                 if inc[0] == left:
-                    inc.pop(0)
+                    inc.popleft()
 
                 if dec[0] == left:
-                    dec.pop(0)
+                    dec.popleft()
 
                 left += 1
 
