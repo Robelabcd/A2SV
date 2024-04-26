@@ -1,55 +1,43 @@
 class Node:
-    def __init__(self, val, prev=None, next=None):
+    def __init__(self, val, next = None, prev = None):
         self.val = val
-        self.prev = prev
         self.next = next
-
-
-
+        self.prev = prev
 
 class MyCircularDeque:
 
     def __init__(self, k: int):
-        self.limit = k
-        #dummy nodes
         self.head = Node(-1)
         self.tail = Node(-1)
 
-        #make connections
-        self.tail.prev = self.head
         self.head.next = self.tail
+        self.tail.prev = self.head
 
-        #we need to count to not be out of the limit given (k)
+        self.limit = k
         self.count = 0
+        
 
     def insertFront(self, value: int) -> bool:
-        #make sure it's not full
         if self.isFull():
             return False
 
-        #otherwise
-        previously_first = self.head.next
-        curr = Node(value, self.head, previously_first)
+        prev_first = self.head.next
+        new = Node(value, prev_first, self.head)
+        self.head.next = new
+        prev_first.prev = new
 
-        self.head.next = curr
-        previously_first.prev = curr
-
-        #increase the count
         self.count += 1
-        
 
         return True
-        
 
     def insertLast(self, value: int) -> bool:
         if self.isFull():
             return False
 
         prev_last = self.tail.prev
-        curr = Node(value, prev_last, self.tail)
-
-        self.tail.prev = curr
-        prev_last.next = curr
+        new = Node(value, self.tail, prev_last)
+        self.tail.prev = new
+        prev_last.next = new
 
         self.count += 1
 
@@ -75,11 +63,11 @@ class MyCircularDeque:
         if self.isEmpty():
             return False
 
-        last = self.tail.prev
-        before_to_last = self.tail.prev.prev
+        first = self.tail.prev
+        second = self.tail.prev.prev
 
-        self.tail.prev = before_to_last
-        before_to_last.next = self.tail
+        self.tail.prev = second
+        second.next = self.tail
 
         self.count -= 1
 
@@ -92,14 +80,16 @@ class MyCircularDeque:
         
 
     def getRear(self) -> int:
-        return self.tail.prev.val
-        
+
+        return self.tail.prev.val      
 
     def isEmpty(self) -> bool:
+
         return self.count == 0
         
 
     def isFull(self) -> bool:
+
         return self.count == self.limit
         
 
