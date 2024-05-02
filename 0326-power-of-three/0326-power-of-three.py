@@ -1,6 +1,6 @@
 class Solution:
     def isPowerOfThree(self, n: int) -> bool:
-        
+        #same like power of four
         if n == 1:
             return True
 
@@ -9,4 +9,4 @@ class Solution:
 
         else:
 
-            return True and self.isPowerOfThree(n//3)
+            return True and self.isPowerOfThree(n/3)
