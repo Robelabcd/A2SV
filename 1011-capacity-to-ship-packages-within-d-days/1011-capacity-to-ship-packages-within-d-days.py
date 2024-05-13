@@ -6,10 +6,6 @@ class Solution:
 
         low = minimum_weight = 10
         high = max_weight = sum(weights) = 55
-
-
-        mid ->
-
         
         
         '''
