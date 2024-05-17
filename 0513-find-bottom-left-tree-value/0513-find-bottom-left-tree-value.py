@@ -6,7 +6,15 @@
 #         self.right = right
 class Solution:
     def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
+        '''
+
+        [root]---> array
+
+        [root.left, root.right]---> append this after popping the root
+
+        simply, arr[0] will be the leftmost
         
+        '''
         
         if not root:
             return None
