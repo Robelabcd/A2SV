@@ -10,7 +10,7 @@ class Solution:
             temp_max = max(temp_max, height[i])
             Forwardmax.append(temp_max)
 
-        #Precompute the backward max
+        #Precompute the backward max.
         temp_max = 0
         Backmax = []
         for i in range(len(height)-1, -1, -1):
