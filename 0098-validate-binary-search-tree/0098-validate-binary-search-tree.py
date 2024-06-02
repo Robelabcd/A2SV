@@ -6,11 +6,23 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        '''
+        -inf < 2 < inf
+
+        left: -inf < 1 < 2
+        
+        right: 2 < 3 < inf
+
+        --> no child means it's valid (return True)
+
+        ---> if not left and right requirements = not valid (return False)
+        
+        '''
         
         def helper(node, left_boundary, right_boundary):
 
             if not node:
-                return True
+                return True  
 
             if not (node.val > left_boundary and node.val < right_boundary):
                 return False
@@ -22,4 +34,9 @@ class Solution:
             return left and right
 
 
-        return helper(root, -inf, inf)
+        return helper(root, -inf, inf) #initially: -inf < node.val < inf
+
+
+        
+
+#Time complexity : O(2n) = O(n)  same with space complexity
