@@ -1,14 +1,19 @@
 class Solution:
     def appendCharacters(self, s: str, t: str) -> int:
         
-        ptr1 = ptr2 = 0
+        def helper(ind_s, ind_t):
 
-        while ptr1 < len(s) and ptr2 < len(t):
+            if ind_t == len(t):
+                return 0
 
-            if s[ptr1] == t[ptr2]:
-                ptr2 += 1
+            if ind_s == len(s):
+                return len(t) - ind_t
 
-            ptr1 += 1
+            if s[ind_s] == t[ind_t]:
 
+                return helper(ind_s + 1, ind_t + 1)
 
-        return len(t) - ptr2
+            return helper(ind_s + 1, ind_t)
+
+        
+        return helper(0, 0)
