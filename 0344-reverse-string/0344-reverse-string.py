@@ -1,39 +1,17 @@
 class Solution:
-
-
-
-    def reverse(self, initial, end, s):
-
-        #base case
-        if initial >= end:
-            return
-
-        s[initial], s[end] = s[end], s[initial]
-
-        self.reverse(initial+1, end - 1, s)
-
-
-
-
     def reverseString(self, s: List[str]) -> None:
         """
         Do not return anything, modify s in-place instead.
         """
         
-        # n = len(s)
+        def helper(left, right, s):
 
-        # for i in range(n//2):
+            if left >= right:
+                return 
 
-        #     s[i], s[n-i-1] = s[n-i-1], s[i]
+            s[left], s[right] = s[right], s[left]
 
-        # Recurssion
+            helper(left+1, right-1, s)
 
-        n = len(s)
-        end = n - 1
-        # i = 0 --> initial
-
-        self.reverse(0, end, s)
-
-
-
-
+        
+        helper(0, len(s)-1, s)
