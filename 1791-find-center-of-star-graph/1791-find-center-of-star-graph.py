@@ -1,26 +1,19 @@
 class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:
         
-        '''
-        indegree and outdegree of each
-        [1:1, 2:3, 3:1, 4:1]
+        # practice - done it before
+        n = len(edges) + 1
+        indegree = [0]*(n+1)
+        outdegree = [0]*(n+1)
 
-        2 - has n-1 edges 
-        
-        '''
+        for x in edges:
+            indegree[x[1]] += 1
+            indegree[x[0]] += 1
+            outdegree[x[1]] += 1
+            outdegree[x[0]] += 1
 
-        count_degree = defaultdict(int)
 
-        for edge in edges:
+        for i in range(len(indegree)):
 
-            count_degree[edge[0]] += 1
-            count_degree[edge[1]] += 1
-
-        req = len(edges)
-
-        for x, y in count_degree.items():
-            if y == req:
-                return x
-
-            
-            
+            if indegree[i] == len(edges) and outdegree[i] == len(edges):
+                return i
