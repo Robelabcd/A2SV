@@ -1,7 +1,7 @@
 class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:
         
-        # practice - done it before
+        #second approach
         n = len(edges) + 1
         indegree = [0]*(n+1)
         outdegree = [0]*(n+1)
@@ -17,3 +17,8 @@ class Solution:
 
             if indegree[i] == len(edges) and outdegree[i] == len(edges):
                 return i
+
+
+    '''
+    Time and space complexity = O(n)
+    '''
