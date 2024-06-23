@@ -1,8 +1,6 @@
 class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
         
-
-
         graph = defaultdict()
 
         for index, relation in enumerate(equations):
