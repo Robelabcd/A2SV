@@ -1,7 +1,9 @@
 class Solution:
+    #approach ---> not okay to go over the grid
+
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
 
-        #global variable - to store visted box
+        #global variable - to store visted box.
         visited = set()
 
 
@@ -18,6 +20,8 @@ class Solution:
             if (not inbound(i, j)) or grid[i][j] != 1:
                 return 0
 
+            if (i, j) in visited:
+                return 0
 
             #mark it as visited
             visited.add((i, j))
@@ -30,8 +34,8 @@ class Solution:
             directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
             for row_change, col_change in directions:
-                if not (i+row_change, j+col_change) in visited:
-                    area += dfs(i+row_change, j+col_change)
+                
+                area += dfs(i+row_change, j+col_change)
 
 
             return area
@@ -50,3 +54,6 @@ class Solution:
 
 
         return max_area
+
+
+        
