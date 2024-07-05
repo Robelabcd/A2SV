@@ -1,7 +1,7 @@
 class Solution:
     def maximumDetonation(self, bombs: List[List[int]]) -> int:
         '''
-        [A = [2,1,3], B = [6,1,4]]
+        [A = [2,1,3],  B = [6,1,4]]
         
         distance(A&B) <= radius -> can detonate 
         distance **2 = (x1 - x2)**2 + (y1 - y2)**2  -->pythagoras theorem 
