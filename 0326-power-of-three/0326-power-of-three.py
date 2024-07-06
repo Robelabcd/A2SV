@@ -1,6 +1,6 @@
 class Solution:
     def isPowerOfThree(self, n: int) -> bool:
-        #same like power of four.
+        #same like power of four
         if n == 1:
             return True
 
