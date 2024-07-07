@@ -22,7 +22,7 @@ class Solution:
         level.append(20)
         res.append(level)
 
-        .........
+        ...........
     
         '''
 
