@@ -1,34 +1,29 @@
+from collections import deque
+from typing import List
+
 class Solution:
     def openLock(self, deadends: List[str], target: str) -> int:
-        # Convert deadends to a set for O(1) lookup
-        deadends = set(deadends)
-        if "0000" in deadends:
+        
+        dead_set = set(deadends)
+        if "0000" in dead_set:
             return -1
         
-        # Initialize BFS
-        queue = deque([('0000', 0)])  # (current_combination, moves)
-        visited = set('0000')
+        q = deque([('0000', 0)])  # (current, steps)
+        seen = set('0000')
         
-        # BFS loop
-        while queue:
-            current_combination, moves = queue.popleft()
+        while q:
+            current, steps = q.popleft()
             
-            # Check if we've reached the target
-            if current_combination == target:
-                return moves
+            if current == target:
+                return steps
             
-            # Generate next possible combinations
             for i in range(4):
-                for delta in [-1, 1]:
-                    new_digit = (int(current_combination[i]) + delta) % 10
-                    new_combination = (
-                        current_combination[:i] + str(new_digit) + current_combination[i+1:]
-                    )
+                for move in [-1, 1]:
+                    new_digit = (int(current[i]) + move) % 10
+                    new_comb = current[:i] + str(new_digit) + current[i+1:]
                     
-                    # Check if the new combination is valid and not visited
-                    if new_combination not in visited and new_combination not in deadends:
-                        visited.add(new_combination)
-                        queue.append((new_combination, moves + 1))
+                    if new_comb not in seen and new_comb not in dead_set:
+                        seen.add(new_comb)
+                        q.append((new_comb, steps + 1))
         
-        # If target is not reachable
         return -1
