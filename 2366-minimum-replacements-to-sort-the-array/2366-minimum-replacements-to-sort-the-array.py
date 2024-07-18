@@ -18,17 +18,10 @@ class Solution:
             cur_num = nums[i]
 
             if cur_num > end_ptr_num:
-                remainder = cur_num % end_ptr_num
-                
-                if remainder == 0:
-
-                    count_ops = cur_num // end_ptr_num
-                    ops += count_ops - 1
-
-                else:
-                    count_ops = cur_num // end_ptr_num + 1
-                    ops += count_ops - 1
-                    end_ptr_num = cur_num // count_ops
+            
+                count_ops = ceil(cur_num / end_ptr_num)
+                ops += count_ops - 1
+                end_ptr_num = cur_num // count_ops
 
             else:
                 end_ptr_num = cur_num
