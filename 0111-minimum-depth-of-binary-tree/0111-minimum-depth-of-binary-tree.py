@@ -7,23 +7,29 @@
 class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
         
-        min_count = inf
-        def helper(node, distance):
+        if not root:
+            return 0
 
-            nonlocal min_count
 
-            if node:
+        queue = deque([root])
+        count = 0
+
+        while queue:
+
+            count += 1
+
+            for _ in range(len(queue)):
+                node = queue.popleft()
+
                 if not node.left and not node.right:
-                    min_count = min(min_count, distance)
+                    return count
 
+                if node.left:
+                    queue.append(node.left)
 
-                helper(node.left, distance+1)
-                helper(node.right, distance+1)
+                if node.right:
+                    queue.append(node.right)
 
-
-        helper(root, 1)
-
-        return min_count if min_count != inf else 0
-
+        return count
 
 
