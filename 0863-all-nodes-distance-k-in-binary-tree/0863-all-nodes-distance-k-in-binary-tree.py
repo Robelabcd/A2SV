@@ -8,7 +8,7 @@
 class Solution:
     def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
         '''
-        target --> Target node 
+        target --> Target node. 
             -->find nodes k away from the target node
 
         maximum edge to one node - 3
