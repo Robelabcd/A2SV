@@ -3,7 +3,7 @@ class Solution:
         
         col, row = len(board[0]), len(board)
 
-        path = set() #to make sure the cell is not revisited
+        path = set() # to make sure the cell is not revisited
 
         def dfs(c, r, i):     #i is a charcter of the given word
 
