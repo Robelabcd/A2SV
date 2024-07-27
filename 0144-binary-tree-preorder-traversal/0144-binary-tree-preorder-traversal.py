@@ -5,54 +5,70 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         
-        #iterative approach
+        '''
+        preorder: root->left->right
 
-        res = [] 
-        
-        stack = []
+        res = [] to store the result
 
-        cur = root
+        steps:
+        append the root to "res" while going to the left
 
-        while cur or stack:
+        append the right to "stack" along the way
 
-            if cur:
-                #append the root and store the right nodes along the way
-                res.append(cur.val)
-                stack.append(cur.right)
-                cur = cur.left              #and go to the left node 
-        
+        e.g
+        root = [1, null, 2, 3]
+
+        Append '1' to res and apend '2' to stack
+        Go to left:
+            if node exists:
+                new_root = node
             else:
+                new_root = stack.pop ---> go to right
 
-                cur = stack.pop()    #if cur is null, we need to pop back to previous nodes  
-
-
-        return res
-        
         
         '''
-        recursive approach 
+
+        #using flag with each node
+
+        stack = [(root, False)]  #initialize with root node and visited->as False
 
         res = []
 
-        def helper(root):
+        while stack:
 
-            if not root:
-                return
+            node, visited = stack.pop()
 
-            res.append(root.val)
+            if node:
 
-            helper(root.left)
+                if visited:
+                    #no need to go to its other connection since they're already in the stack
+                    res.append(node.val)
 
-            helper(root.right)
-
-
-        helper(root)
+                else:
+                    stack.append((node.right, False))
+                    stack.append((node.left, False))
+                    stack.append((node, True))
+                    
 
         return res
 
-        '''
-        
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
