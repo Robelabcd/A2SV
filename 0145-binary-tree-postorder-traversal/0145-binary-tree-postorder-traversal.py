@@ -6,6 +6,9 @@
 #         self.right = right
 class Solution:
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        
+        #Recursive approach
+        '''
         res = []
 
         def helper(root):
@@ -23,4 +26,42 @@ class Solution:
         helper(root)
 
         return res
-        
+        '''
+        # Iterative approach - using flag
+        # Post order ---> left -> right -> root
+
+        stack = [(root, False)]
+        res = []
+
+        while stack:
+            node, visited = stack.pop()
+
+            if node:
+                if visited:
+                    res.append(node.val)
+
+                else:
+                    stack.append((node, True))
+                    stack.append((node.right, False))
+                    stack.append((node.left, False))
+
+        return res
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
