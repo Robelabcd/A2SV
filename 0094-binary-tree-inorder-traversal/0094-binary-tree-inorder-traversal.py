@@ -6,16 +6,75 @@
 #         self.right = right
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        
+        #iterative and recursive approach
+        '''
+        #recursive approach
         res = []
-        def helper(node):
-            nonlocal res
+        def in_order(node):
+
             if not node:
-                return None
+                return
 
-            helper(node.left)
+            
+            #inorder :  left -> root -> right
+
+            in_order(node.left)
             res.append(node.val)
-            helper(node.right)
+            in_order(node.right)
 
-        helper(root)
+
+        in_order(root)
         return res
+        '''
+
+        #iterative approach - using a stack
+
+        stack = []
+        res = []
+
+        cur_ptr = root  
+        #we need to go all the way left while storing the nodes we touch in the stack
+
+        while stack or cur_ptr:
+
+            while cur_ptr:
+
+                stack.append(cur_ptr)
+                cur_ptr = cur_ptr.left    #to the leftmost side of the tree
+
+            #pop from the stack to get the leftmost node
+            cur_ptr = stack.pop()
+
+            #store the value of the node
+            res.append(cur_ptr.val)
+
+            #incase the current leftmost node has right connection
+            cur_ptr = cur_ptr.right
+
+
+        return res
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
