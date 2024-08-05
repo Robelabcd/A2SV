@@ -39,14 +39,12 @@ class Solution:
 
             
             #with or without decisions
-
-            #with the element or nums[i]
+            helper(index+1)
+            
             each_subset.append(nums[index])
             helper(index+1)
 
-            #without the element
             each_subset.pop()
-            helper(index+1)
 
 
 
