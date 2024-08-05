@@ -4,32 +4,37 @@ class Solution:
         '''
         [1, 2, 3]
 
-        without 1, without 2, without 3
-        breaking down problems: 3-->2--1
+        with 1, with 2, with 3
+        breaking down problems: 
+               [1]                      [2].                       [3]
+        [1, 2]     [1, 3].       [2, 1]     [2, 3].        [3, 1].     [3, 2]
+
+        [1, 2, 3]. [1, 3, 2].    [2, 1, 3]. .............
+
         
-        base case: if len(nums) = 1, return the list - nums itself
+        base case: if len(sol) = len(nums),  append copy of sol and return
         '''
 
-        all_per = []
+        res, sol = [], []
 
-        #base case
-        if len(nums)==1:
-            return [nums[:]]
 
-        for i in range(len(nums)):
-            #pop the first element [1, 2, 3] ---> [2, 3] ---> [3]
-            first = nums.pop(0)
+        def backtrack():
 
-            #recursion to reach base
-            divided_perm = self.permute(nums)
+            #basecase
+            if len(sol) == len(nums):
+                res.append(sol[:])
+                return
 
-            for each_list in divided_perm:
-                each_list.append(first)
 
-            all_per.extend(divided_perm)
-            nums.append(first)
+            for num in nums:
+                if num not in sol:
+                    sol.append(num)
+                    backtrack()
+                    sol.pop()
 
-        return all_per
+        backtrack()
+        return res
+        
 
 
 
