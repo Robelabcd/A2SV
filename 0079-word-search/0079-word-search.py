@@ -1,28 +1,51 @@
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         
-        col, row = len(board[0]), len(board)
+        n, m = len(board), len(board[0])
 
-        path = set() # to make sure the cell is not revisited
+        if n == 1 and m == 1:
+            return board[0][0] == word
 
-        def dfs(c, r, i):     #i is a charcter of the given word
+        #step 3:
+        def inbound(r, c):
+            return 0 <= r < n and 0 <= c < m
+        
+        #step 2:
+        direction = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+        def backtrack(pos, index):
+            i, j = pos
 
-            if i == len(word):
+            #base-case: reaching the len(word)
+            if index == len(word):
                 return True
-
-            if (c<0 or r<0 or c>=col or r>=row or word[i] != board[r][c] or (c, r) in path):
+            
+            if board[i][j] != word[index]:
                 return False
 
-            path.add((c, r))
+            #avoid repeating same char on the path
+            char = board[i][j]
+            board[i][j] = '-1'
 
-            res = (dfs(c+1, r, i+1) or dfs(c-1, r, i+1) or dfs(c, r+1, i+1) or dfs(c, r-1, i+1))
+            for i_chan, j_chan in direction:
+
+                r = i + i_chan
+                c = j + j_chan
+
+                if inbound(r, c):
+                    if backtrack((r, c), index+1):
+                        return True
+
             
-            path.remove((c, r))
-            return res
 
+            board[i][j] = char
+            return False
 
-        for r in range(row):
-            for c in range(col):
-                if dfs(c, r, 0): return True
+        
+        #step 1:
+        for i in range(n):
+            for j in range(m):
+
+                if backtrack((i, j), 0):
+                    return True
 
         return False
