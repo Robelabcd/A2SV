@@ -16,6 +16,7 @@ class Solution:
         
         #Problem: TLE
         #recursive solution
+        #Time: O(2**n).  Space: O(n)
         '''
         def rec(n):
 
@@ -34,8 +35,10 @@ class Solution:
 
 
         #Top-down approach / memoization
+        #it works but we can do better with the recursion and space
+        #Time: O(n)  Space: O(n) 
 
-
+        '''
         memo = {1:1, 2:2}
         def dp(n):
 
@@ -50,9 +53,26 @@ class Solution:
 
         
         return dp(n)
+        '''
+
+        #Bottom up approach - to avoid the recursion and use loop only
+                                # since many prog. lang. work better with loop
 
 
+        if n == 1 or n == 2:
+            return n
 
+        
+        dp = [0]*(n+1)
+        
+        dp[1], dp[2] = 1, 2
+
+        for i in range(3, n+1):
+
+            dp[i] = dp[i-1] + dp[i-2]
+
+        # print(dp)
+        return dp[n] 
 
 
 
