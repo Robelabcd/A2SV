@@ -47,6 +47,7 @@ class Solution:
                 dist[j] -= cookies[index]
 
 
+        
         #call the helper function by starting from index = 0
         helper(0)
 
