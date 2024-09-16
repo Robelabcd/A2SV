@@ -10,6 +10,7 @@ class Solution:
              85 + 93 >= 150  res = min(3, 2) =2
         
         Note: do the prefix sum instead of adding each time
+        
         '''
         n = len(nums) #to make it easier for later use
 
